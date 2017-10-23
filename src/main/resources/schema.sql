@@ -1,19 +1,94 @@
-DROP TABLE if EXISTS `user`;
-CREATE TABLE `user`(
-  `uuid` VARCHAR (50),
-  `name` VARCHAR (100),
-  `email` VARCHAR (100),
-  `username` VARCHAR (100),
-  `password` VARCHAR (100),
-  `active` VARCHAR (5)
-);
+-- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
+--
+-- Host: localhost    Database: test
+-- ------------------------------------------------------
+-- Server version	5.7.19-0ubuntu0.16.04.1
 
-INSERT INTO user(`uuid`, `name`, `email`, `password`, `username`, `active`) VALUES ('af166869-1cdd-4c03-8fbb-d253237d5d92', 'Admin', 'admin@gmail.com', '12345', 'admin', '1');
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP TABLE if EXISTS `user_role`;
-CREATE TABLE if NOT EXISTS `user_role`(
-  `username` VARCHAR (100),
-  `role` VARCHAR (20)
-);
+--
+-- Table structure for table `authority`
+--
 
-INSERT  INTO user_role(`username`, `role`) VALUES ('admin', 'ROLE_ADMIN');
+DROP TABLE IF EXISTS `authority`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authority` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `authority` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `authority_UNIQUE` (`authority`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `enabled` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+--
+-- Table structure for table `user_autrhority`
+--
+
+DROP TABLE IF EXISTS `user_autrhority`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_autrhority` (
+  `user_id` int(11) NOT NULL,
+  `authority_id` int(11) NOT NULL,
+  `user_autrhority_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`user_autrhority_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (3,'mainul35','$2a$11$aQ8I.LKzaxDZxKSDZi8bKucNMiTCdqg.aDImbgw.jHXWvmsxPc6Yy','mainuls18@gmail.com','Syed Mainul Hasan','1');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `authority` WRITE;
+/*!40000 ALTER TABLE `authority` DISABLE KEYS */;
+INSERT INTO `authority` VALUES (1,'ROLE_ADMIN'),(2,'ROLE_USER');
+/*!40000 ALTER TABLE `authority` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `user_autrhority` WRITE;
+/*!40000 ALTER TABLE `user_autrhority` DISABLE KEYS */;
+INSERT INTO `user_autrhority` VALUES (3,1,1),(2,2,2),(3,2,5);
+/*!40000 ALTER TABLE `user_autrhority` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-10-22 12:23:20
