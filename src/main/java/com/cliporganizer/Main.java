@@ -20,15 +20,7 @@ import org.springframework.context.annotation.Import;
 @EnableAutoConfiguration
 @Import({WebSecurityConfig.class})
 @SpringBootApplication(exclude = {com.cliporganizer.MysqlConfig.class})
-public class Main
-//        extends SpringBootServletInitializer
-{
-
-//    @Override
-//    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//        return application.sources(Main.class);
-//    }
-
+public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }

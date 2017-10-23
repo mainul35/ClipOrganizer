@@ -32,7 +32,7 @@ public class UserService implements UserDetailsService {
         com.cliporganizer.model.User user = userRepository.findByUsername(username);
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(
                 "select a.id, a.authority, u.username " +
-                "from `user` u, `authority` a, `user_autrhority` au " +
+                "from `user` u, `authority` a, `user_authority` au " +
                 "where u.id = au.user_id " +
                 "and a.id = au.authority_id " +
                 "and u.username = '"+username+"'");
@@ -58,7 +58,7 @@ public class UserService implements UserDetailsService {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             System.out.println(user.toString());
             userRepository.save(user);
-            String sql = "insert into user_autrhority(user_id, authority_id)\n" +
+            String sql = "insert into user_authority(user_id, authority_id)\n" +
                     "select u.id, a.id\n" +
                     "from user u, authority a\n" +
                     "where u.username='" + user.getUsername() + "'\n" +

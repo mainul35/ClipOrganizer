@@ -1,27 +1,24 @@
 package com.cliporganizer.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Mainul35 on 10/23/2017.
  */
 @Entity
+@Table(name = "Clip")
 public class Clip {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private
-    Integer id;
+    private Integer id;
     private String fileName;
     private Long duration;
     private String type;
-    private Integer numberOftimeBeenPlayed;
+    private Integer numberOfTimeBeenPlayed;
     private Integer minNumberOfTimeCanBePlayed;
     private Integer maxNumberOfTimeCanBePlayed;
     private String genre;
-
 
     public Integer getId() {
         return id;
@@ -55,12 +52,12 @@ public class Clip {
         this.type = type;
     }
 
-    public Integer getNumberOftimeBeenPlayed() {
-        return numberOftimeBeenPlayed;
+    public Integer getNumberOfTimeBeenPlayed() {
+        return numberOfTimeBeenPlayed;
     }
 
-    public void setNumberOftimeBeenPlayed(Integer numberOftimeBeenPlayed) {
-        this.numberOftimeBeenPlayed = numberOftimeBeenPlayed;
+    public void setNumberOfTimeBeenPlayed(Integer numberOfTimeBeenPlayed) {
+        this.numberOfTimeBeenPlayed = numberOfTimeBeenPlayed;
     }
 
     public Integer getMinNumberOfTimeCanBePlayed() {
@@ -94,7 +91,7 @@ public class Clip {
                 ", fileName='" + fileName + '\'' +
                 ", duration=" + duration +
                 ", type='" + type + '\'' +
-                ", numberOftimeBeenPlayed=" + numberOftimeBeenPlayed +
+                ", numberOfTimeBeenPlayed=" + numberOfTimeBeenPlayed +
                 ", minNumberOfTimeCanBePlayed=" + minNumberOfTimeCanBePlayed +
                 ", maxNumberOfTimeCanBePlayed=" + maxNumberOfTimeCanBePlayed +
                 ", genre='" + genre + '\'' +

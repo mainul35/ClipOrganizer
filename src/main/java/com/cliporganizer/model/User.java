@@ -25,9 +25,7 @@ public class User implements UserDetails {
     String email;
     @Column(name = "name", nullable = false, length = 250)
     String name;
-//    @JoinTable(name = "user_authority",
-//            joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+
     @Transient
     List<Authority> authorityList;
     @Column(name = "enabled", nullable = false, length = 45)

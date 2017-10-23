@@ -8,6 +8,7 @@ import java.util.Set;
  */
 
 @Entity
+@Table(name = "RadioShow")
 public class RadioShow {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
