@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <meta charset="UTF-8">
@@ -17,22 +17,30 @@
     <!--/*/ <th:block th:include="includes/header :: header"></th:block> /*/-->
 </head>
 <body>
-<div id="fullscreen_bg" class="fullscreen_bg">
+<div class="wrapper container">
+    <div class="row">
+        <div id="fullscreen_bg" class="fullscreen_bg">
 
-    <div class="container">
-        <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin" method="POST" action="/signup" th:action="@{/signup}" th:object="${user}">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="hidden" th:field="*{id}"/>
-                <input type="text" name="name" th:field="*{name}" class="form-control" placeholder="Name" required autofocus>
-                <input type="text" name="username" th:field="*{username}" class="form-control" placeholder="Username" required>
-                <input type="email" name="email" th:field="*{email}" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" name="password" th:field="*{password}" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign Up</button>
-            </form><!-- /form -->
-        </div><!-- /card-container -->
+            <div class="container">
+                <div class="card card-container">
+                    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
+                    <p id="profile-name" class="profile-name-card"></p>
+                    <form class="form-signin" method="POST" action="/signup" th:action="@{/signup}" th:object="${user}">
+                        <span id="reauth-email" class="reauth-email"></span>
+                        <input type="hidden" th:field="*{id}"/>
+                        <input type="text" name="name" th:field="*{name}" class="form-control" placeholder="Name"
+                               required autofocus>
+                        <input type="text" name="username" th:field="*{username}" class="form-control"
+                               placeholder="Username" required>
+                        <input type="email" name="email" th:field="*{email}" class="form-control"
+                               placeholder="Email address" required autofocus>
+                        <input type="password" name="password" th:field="*{password}" class="form-control"
+                               placeholder="Password" required>
+                        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign Up</button>
+                    </form><!-- /form -->
+                </div><!-- /card-container -->
+            </div>
+        </div>
     </div>
 </div>
 </body>

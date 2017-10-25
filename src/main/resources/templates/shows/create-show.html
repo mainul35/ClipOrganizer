@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<!--/*/ <th:block th:include="includes/components :: components"></th:block> /*/-->
+<!--/*/ <th:block th:include="includes/header :: header"></th:block> /*/-->
+<div class="container">
+
+</div>
+    <form class="form-signin" method="POST" th:action="@{/show/create}">
+        <div th:if="${param.error}" class="alert alert-danger">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            You have been logged out.
+        </div>
+        <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Password">
+        <input class="btn btn-lg btn-primary btn-block" type="submit">
+        </input>
+    </form>
+</body>
+</html>
